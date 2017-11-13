@@ -84,7 +84,7 @@
 </head>
 <body>
     <div id="box">
-        <textarea name="" id="txt" cols="30" rows="10"></textarea>
+        <textarea name="" id="txt" cols="30" rows="10" placeholder = ""></textarea>
         <img src="images/2.jpg" style={display:none;} alt="">
         <img src="images/1.jpg" style={display:block;} alt="">
         <span>发表</span>
@@ -114,8 +114,11 @@
         var src = "images/1.jpg";
 
         oSpan.onclick = function(){
+
             var val = oTxt.value;
+            if(val === "") return;
             oUl.innerHTML += "<li><img src='"+ src +" ' alt=''><p>"+ val + "</p></li>";
+            oTxt.value = "";
             // alert(val);
 
         };
