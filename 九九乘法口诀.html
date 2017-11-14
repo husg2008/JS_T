@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: "icrosoft yahei", serif;
+        }
+
+        li {
+            list-style-type: none;
+        }
+        #box{
+
+        }
+        #box span{
+            display:inline-block;
+            width: 90px;
+            height: 30px;
+            margin:5px;
+            text-align:center;
+            line-height: 35px;
+            border:1px solid blue;
+        }
+
+    </style>
+</head>
+<body>
+<div id="box"></div>
+
+<script>
+    var oBox = document.getElementById("box");
+
+    for(var i=1;i<10;i++){
+        //9行
+        for(var j=1;j<=i;j++){
+            //根据行数不同，烈数进行变化
+            oBox.innerHTML += "<span>" + i + "*" + j + "=" + i*j + "</span>";
+        }
+        //每一列结束后换行
+        oBox.innerHTML += "<br>";
+    }
+
+</script>
+
+</body>
+</html>
