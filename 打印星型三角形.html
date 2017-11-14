@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>星型三角形</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: "icrosoft yahei", serif;
+        }
+
+        li {
+            list-style-type: none;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="box"></div>
+    <script>
+        var oBox = document.getElementById("box"),
+            i,k,j,
+            length = 50;
+//        for(i=0;i<length;i++){
+//            //添加空格
+//            for(k=0;k<i;k++){
+//                oBox.innerHTML += "&nbsp;";
+//            }
+//            //添加★
+//            for(j=0;j<2*(length-i-1)+1;j++){
+//                oBox.innerHTML += "*";
+//            }
+//            //添加换行
+//            oBox.innerHTML += "<br>";
+//
+//        }
+        for(i=0;i<length;i++){
+            //添加空格
+            for(k=0;k<length-1-i;k++){
+                oBox.innerHTML += "&nbsp;";
+            }
+            //添加★
+            for(j=0;j<2*i+1;j++){
+                oBox.innerHTML += "*";
+            }
+            //添加换行
+            oBox.innerHTML += "<br>";
+
+        }
+
+
+    </script>
+
+</body>
+</html>

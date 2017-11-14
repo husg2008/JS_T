@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>二级下拉菜单</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: "icrosoft yahei", serif;
+        }
+
+        li {
+            list-style-type: none;
+        }
+        #box{
+            width: 200px;
+            margin:100px auto;
+            border:1px dashed #bbb;
+        }
+        #box ul{
+            overflow:hidden;
+            width: 100%;
+            height: 31px;
+
+        }
+        #box ul.show{
+            height:auto;
+        }
+        #box ul li{
+            width: 100%;
+            height: 25px;
+            text-indent:10px;
+            line-height:25px;
+            border-bottom:1px solid #eee;
+            cursor:default;
+
+        }
+        #box ul li.title{
+            height: 30px;
+            text-indent:5px;
+            line-height:30px;
+            font-size:14px;
+            font-weight:bold;
+            background-color: pink;
+            cursor:pointer;
+
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <ul class="show">
+            <li class="title">同事</li>
+            <li>李老师</li>
+            <li>王老师</li>
+            <li>周老师</li>
+            <li>董院长</li>
+            <li>胡所长</li>
+        </ul>
+        <ul>
+            <li class="title">好友</li>
+            <li>小莉</li>
+            <li>小跬</li>
+            <li>小猪</li>
+        </ul>
+        <ul>
+            <li class="title">VIP客户</li>
+            <li>妞妞</li>
+            <li>犇犇</li>
+            <li>果果</li>
+            <li>丫丫</li>
+        </ul>
+    </div>
+    <script>
+        var oBox = document.getElementById("box"),
+            aTitle = oBox.querySelectorAll(".title"),
+            aUl = oBox.getElementsByTagName("ul"),
+            length = aTitle.length,
+            i = 0,
+            index = 0;
+
+
+            for(;i<length;i++){
+                //在点击事件前自定义属性用于存放i的计数 位置须放在for循环里面，事件之前
+                aTitle[i].hu = i;
+                aTitle[i].onclick = function (){
+                    aUl[index].className = "";//隐藏前一个Ul
+                    index = this.hu;//改变index计数
+                    aUl[index].className = "show";//显示当前点击的Ul
+                }
+            }
+
+
+
+    </script>
+
+</body>
+</html>
