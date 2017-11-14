@@ -37,15 +37,11 @@
             resize:none;
         }
         #box > img{
-            display:none;
             position:absolute;
             top:65px;
             left: 10px;
             width: 30px;
             height: 30px;
-        }
-        #box .on{
-            display:block;
         }
         span{
             display:block;
@@ -88,9 +84,9 @@
 </head>
 <body>
     <div id="box">
-        <textarea name="" id="txt" cols="30" rows="10" placeholder=""></textarea>
-        <img class="on" src="images/tx1.jpg"  alt="">
-        <img src="images/tx2.png" alt="">
+        <textarea name="" id="txt" cols="30" rows="10" placeholder = ""></textarea>
+        <img src="images/2.jpg" style={display:none;} alt="">
+        <img src="images/1.jpg" style={display:block;} alt="">
         <span>发表</span>
     </div>
     <div id="list">
@@ -111,27 +107,29 @@
     </div>
 
     <script>
-        var oSpan = document.querySelectorAll("#box span"),
-            oTxt = document.getElementById("txt"),
-            oImg = document.querySelectorAll("#box img"),
-            oUl = document.querySelector("#list ul"),
-            src = "images/tx1.jpg";
+        var oSpan = document.getElementsByTagName("span")[0];
+        var oTxt = document.getElementById("txt");
+        var oImg = document.querySelectorAll("#box img");
+        var oUl = document.querySelector("#list ul");
+        var src = "images/1.jpg";
 
+        oSpan.onclick = function(){
 
-        oSpan[0].onclick = function(){
-            val = oTxt.value;
+            var val = oTxt.value;
+            if(val === "") return;
             oUl.innerHTML += "<li><img src='"+ src +" ' alt=''><p>"+ val + "</p></li>";
+            oTxt.value = "";
             // alert(val);
 
         };
           oImg[0].onclick = function(){
-              oImg[0].className = "";
-              oImg[1].className = "on";
+              this.style.display = "none";
+              oImg[1].style.display = "block";
               src = oImg[1].src;
           };
           oImg[1].onclick = function(){
-              oImg[1].className = "";
-              oImg[0].className = "on";
+              oImg[0].style.display = "block";
+              this.style.display = "none";
               src = oImg[0].src;
           };
 
