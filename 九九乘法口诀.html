@@ -18,11 +18,11 @@
         }
         #box span{
             display:inline-block;
-            width: 90px;
-            height: 30px;
+            width: 65px;
+            height: 25px;
             margin:5px;
             text-align:center;
-            line-height: 35px;
+            line-height: 25px;
             border:1px solid blue;
         }
 
@@ -38,7 +38,37 @@
         //9行
         for(var j=1;j<=i;j++){
             //根据行数不同，烈数进行变化
-            oBox.innerHTML += "<span>" + i + "*" + j + "=" + i*j + "</span>";
+            oBox.innerHTML += "<span>" + i + "×" +  "" + j + "=" + i*j + "</span>";
+        }
+        //每一列结束后换行
+        oBox.innerHTML += "<br>";
+    }
+    oBox.innerHTML += "<hr><hr>";//添加2条换行间隔线
+    for(i=1;i<10;i++){
+        //9行
+        for(j=i;j<=9;j++){
+            //根据行数不同，烈数进行变化
+            oBox.innerHTML += "<span>" + i + "×" +  "" + j + "=" + i*j + "</span>";
+        }
+        //每一列结束后换行
+        oBox.innerHTML += "<br>";
+    }
+    oBox.innerHTML += "<hr><hr>";//添加2条换行间隔线
+    for(i=9;i>0;i--){
+        //9行
+        for(j=1;j<=i;j++){
+            //根据行数不同，烈数进行变化
+            oBox.innerHTML += "<span>" + i + "×" +  "" + j + "=" + i*j + "</span>";
+        }
+        //每一列结束后换行
+        oBox.innerHTML += "<br>";
+    }
+    oBox.innerHTML += "<hr><hr>";//添加2条换行间隔线
+    for(i=9;i>0;i--){
+        //9行
+        for(j=i;j<=9;j++){
+            //根据行数不同，烈数进行变化
+            oBox.innerHTML += "<span>" + i + "×" +  "" + j + "=" + i*j + "</span>";
         }
         //每一列结束后换行
         oBox.innerHTML += "<br>";
