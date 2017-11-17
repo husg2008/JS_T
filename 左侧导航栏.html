@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>左侧导航栏</title>
+</head>
+<style>
+    *{
+        margin:0;
+        padding:0;
+        font-family:"microsoft yahei"
+    }
+    li{
+        list-style-type: none;
+    }
+    #box{
+        position:relative;
+        width: 1000px;
+        margin:auto;
+    }
+    #box ul{
+        position:absolute;
+        top:20px;
+        left: 5px;
+        width:200px;
+        height: 600px;
+        color:#fff;
+        background-color: saddlebrown;
+    }
+    #box ul li{
+        width: 100%;
+        height: 30px;
+        padding:8px;
+        cursor:pointer;
+    }
+    #box ul li p{
+        width: 100%;
+        height: 100%;
+        line-height:100%;
+        text-indent:2em;
+    }
+    #box ul li div{
+        display:none;
+        position:absolute;
+        top:0;
+        left:200px;
+        width: 600px;
+        height: 598px;
+        color:#000;
+        background-color: #fff;
+        border:1px solid #447f0f;
+    }
+</style>
+<body>
+  <div id = "box">
+      <ul>
+          <li>
+              <p>视觉设计</p>
+              <div>1</div>
+          </li>
+          <li>
+              <p>软件硬件</p>
+              <div>2</div>
+          </li>
+          <li>
+              <p>营销培训</p>
+              <div>3</div>
+          </li>
+          <li>
+              <p>工业设计</p>
+              <div>4</div>
+          </li>
+          <li>
+              <p>游戏动漫</p>
+              <div>5</div>
+          </li>
+          <li>
+              <p>电商培训</p>
+              <div>6</div>
+          </li>
+          <li>
+              <p>语言学习</p>
+              <div>7</div>
+          </li>
+          <li>
+              <p>室内设计</p>
+              <div>8</div>
+          </li>
+          <li>
+              <p>职场人文</p>
+              <div>9</div>
+          </li>
+          <li>
+              <p>视觉设计</p>
+              <div>10</div>
+          </li>
+          <li>
+              <p>艺术创作</p>
+              <div>11</div>
+          </li>
+          <li>
+              <p>健康生活</p>
+              <div>12</div>
+          </li>
+
+          <li>
+              <p>升学考研</p>
+              <div>13</div>
+          </li>
+      </ul>
+  </div>
+    <script>
+       var oBox = document.getElementById("box"),
+           aLi = oBox.querySelectorAll("ul li"),
+           aDiv = oBox.querySelectorAll("ul li div"),
+           num = 0;
+       for(var i=0;i<13;i++){
+           aLi[i].index = i;
+           aLi.onclick = function () {
+               aDiv[num].style.display = "none";
+               num = aLi[i].index;
+               aDiv[num].style.display = "block";
+
+           }
+       }
+
+    </script>
+</body>
+</html>
