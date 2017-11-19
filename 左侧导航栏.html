@@ -30,8 +30,9 @@
     #box ul li{
         width: 100%;
         height: 30px;
-        padding:8px;
+        padding:6px;
         cursor:pointer;
+        border:1px solid red;
     }
     #box ul li p{
         width: 100%;
@@ -112,14 +113,15 @@
     <script>
        var oBox = document.getElementById("box"),
            aLi = oBox.querySelectorAll("ul li"),
-           aDiv = oBox.querySelectorAll("ul li div"),
+           aDiv = oBox.querySelectorAll("ul div"),
            num = 0;
        for(var i=0;i<13;i++){
            aLi[i].index = i;
-           aLi.onclick = function () {
+           aLi[i].onmouseenter = function () {
                aDiv[num].style.display = "none";
                num = aLi[i].index;
                aDiv[num].style.display = "block";
+
 
            }
        }
