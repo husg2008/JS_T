@@ -30,9 +30,9 @@
     #box ul li{
         width: 100%;
         height: 30px;
-        padding:6px;
+        padding:8px;
         cursor:pointer;
-        border:1px solid red;
+
     }
     #box ul li p{
         width: 100%;
@@ -47,9 +47,15 @@
         left:200px;
         width: 600px;
         height: 598px;
-        color:#000;
+        font-size:50px;
+        line-height:598px;
+        text-align:center;
+        color: #000;
         background-color: #fff;
         border:1px solid #447f0f;
+    }
+    #box ul li:nth-child(odd) > div{
+        width: 300px;
     }
 </style>
 <body>
@@ -57,72 +63,105 @@
       <ul>
           <li>
               <p>视觉设计</p>
-              <div>1</div>
+              <div><span>1</span></div>
           </li>
           <li>
               <p>软件硬件</p>
-              <div>2</div>
+              <div><span>2</span></div>
           </li>
           <li>
               <p>营销培训</p>
-              <div>3</div>
+              <div><span>3</span></div>
           </li>
           <li>
               <p>工业设计</p>
-              <div>4</div>
+              <div><span>4</span></div>
           </li>
           <li>
               <p>游戏动漫</p>
-              <div>5</div>
+              <div><span>5</span></div>
           </li>
           <li>
               <p>电商培训</p>
-              <div>6</div>
+              <div><span>6</span></div>
           </li>
           <li>
               <p>语言学习</p>
-              <div>7</div>
+              <div><span>7</span></div>
           </li>
           <li>
               <p>室内设计</p>
-              <div>8</div>
+              <div><span>8</span></div>
           </li>
           <li>
               <p>职场人文</p>
-              <div>9</div>
+              <div><span>9</span></div>
           </li>
           <li>
               <p>视觉设计</p>
-              <div>10</div>
+              <div><span>10</span></div>
           </li>
           <li>
               <p>艺术创作</p>
-              <div>11</div>
+              <div><span>11</span></div>
           </li>
           <li>
               <p>健康生活</p>
-              <div>12</div>
+              <div><span>12</span></div>
           </li>
 
           <li>
               <p>升学考研</p>
-              <div>13</div>
+              <div><span>13</span></div>
           </li>
       </ul>
   </div>
     <script>
        var oBox = document.getElementById("box"),
            aLi = oBox.querySelectorAll("ul li"),
-           aDiv = oBox.querySelectorAll("ul div"),
+           aDiv = oBox.querySelectorAll("ul li div"),
+           aSpan = oBox.querySelectorAll("ul li div span"),
+           length = aDiv.length;
            num = 0;
-       for(var i=0;i<13;i++){
+       for(var i=0;i<length;i++){
+           //自定义属性变量保存i的序列号
            aLi[i].index = i;
            aLi[i].onmouseenter = function () {
+               //隐藏前一个div
                aDiv[num].style.display = "none";
-               num = aLi[i].index;
+               //改变num值
+               num = this.index;
+               //显示当前div
                aDiv[num].style.display = "block";
 
-
+           }
+           //自定义属性变量保存i的序列号
+           aDiv[i].index = i;
+           aDiv[i].onmouseenter = function () {
+               //改变num值
+               num = this.index;
+               //改变div背景颜色
+               aDiv[num].style.backgroundColor = "#eee";
+           }
+           aDiv[i].onmouseleave = function () {
+               //改变num值
+               num = this.index;
+               //改变div背景颜色
+               aDiv[num].style.backgroundColor = "#fff";
+           }
+           //自定义属性变量保存i的序列号
+           aSpan[i].index = i;
+           aSpan[i].onmouseenter = function () {
+               //改变num值
+               num = this.index;
+               //改变div中的字体颜色
+               aSpan[num].style.color = "red";
+           }
+           aSpan[i].onmouseleave = function () {
+               //改变num值
+               num = this.index;
+               //改变div中的字体颜色
+               aSpan[num].style.color = "#000";
            }
        }
 

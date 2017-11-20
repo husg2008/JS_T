@@ -26,13 +26,13 @@
             width:326px;
             height: 100%;
         }
-        #box .pic li img{
+        #box .pic ul li{
             display:none;
             position:absolute;
             top:0;
             left:0;
         }
-        #box .pic li img.on{
+        #box .pic ul li.on{
             display:block;
         }
         #box .btn{
@@ -42,7 +42,7 @@
             width: 34px;
             height: 100%;
         }
-        #box .btn li{
+        #box .btn ul li{
             width: 34px;
             height: 34px;
             text-align: center;
@@ -50,9 +50,21 @@
             margin-bottom: 5px;
             color:#fff;
             background: #000;
+            cursor:pointer;
         }
-        #box .btn li.orange{
+        #box .btn ul li.orange{
             background-color: orangered;
+        }
+        #box .info{
+            position:absolute;
+            bottom:0;
+            left:0;
+            width: 326px;
+            height: 50px;
+            text-align: center;
+            line-height: 50px;
+            color:#fff;
+            background-color: #000;
         }
     </style>
 </head>
@@ -61,7 +73,7 @@
         <!--图片显示区-->
         <div class="pic">
             <ul>
-                <li ><img class ="on"  src="images/g1.jpg" alt=""></li>
+                <li class ="on"><img src="images/g1.jpg" alt=""></li>
                 <li><img src="images/g2.jpg" alt=""></li>
                 <li><img src="images/g3.jpg" alt=""></li>
                 <li><img src="images/g4.jpg" alt=""></li>
@@ -81,14 +93,26 @@
     </div>
     <script>
         var oBox = document.getElementById("box"),
-            aPic = oBox.querySelectorAll(".pic ul li img"),
+            aPic = oBox.querySelectorAll(".pic ul li"),
             aBtn = oBox.querySelectorAll(".btn ul li"),
-            aInfo = oBox.querySelector(".info p span");
-        var length = aPic.length;
+            aInfo = oBox.querySelector(".info span"),
+            length = aPic.length,
+            j = 0;
         for(var i=0;i<length;i++){
-            aPic[i].index = i;
+            //自定属性存放循环体的序列号
+            aBtn[i].index = i;
             aBtn[i].onclick = function(){
-                aPic[i].className += "on";
+                //隐藏前一张图片,恢复前一张btn的背景颜色为黑色
+                aPic[j].className = "";
+                aBtn[j].className = "";
+                //改变j的值
+                j = this.index;
+                //显示当前图片,改变当前btn的背景颜色为橙色
+                aPic[j].className += "on";
+                aBtn[j].className = "orange";
+
+                //改变info值
+                aInfo.innerHTML = j + 1;
             }
 
         }
