@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <style>
+    <style id="css">
         * {
             margin: 0;
             padding: 0;
@@ -14,18 +14,18 @@
             list-style-type: none;
         }
         #box{
-            position:relative;
-            width: 300px;
-            height: 300px;
+
+            width: 180px;
+            height: 320px;
             margin:100px auto;
-            background: url("images/girlT.jpg") no-repeat center/cover;
+            background: url("images/son.jpg") no-repeat center/cover;
             border:1px solid #000;
         }
         #box span{
-            position:absolute;
-            width: 5px;
-            height: 5px;
-            background-color: #eee;
+            float:left;
+            width: 10px;
+            height: 10px;
+            background-color: pink;
 
         }
 
@@ -37,17 +37,25 @@
     
 </div>
 <script>
-    var oBox = document.getElementById("box");
+    var oBox = document.getElementById("box"),
+        aSpan = oBox.querySelectorAll("span"),
+        str = "";
 
-    for(var i=1;i<=60;i++){
-        //9行
-        for(var j=1;j<=i;j++){
-            //根据行数不同，烈数进行变化
-            oBox.innerHTML += "<span></span>";
+    for(var i=1;i<=32;i++){
+        //32行
+        for(var j=1;j<=18;j++){
+            //18列
+            str += "<span></span>";
         }
-        //每一列结束后换行
-        oBox.innerHTML += "<br>";
-    }
+    }oBox.innerHTML = str;
+    //开启新的循环，构建事件函数
+//    for(var k=1;k<=32*18;k++){
+//        aSpan[k].onmouseenter = function () {
+//            this.style.opacity = 0;
+//        }
+//    }
+
+
 
 </script>
 
