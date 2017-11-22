@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <style id="css">
+    <style>
         * {
             margin: 0;
             padding: 0;
@@ -14,11 +14,10 @@
             list-style-type: none;
         }
         #box{
-
             width: 180px;
             height: 320px;
             margin:100px auto;
-            background: url("images/son.jpg") no-repeat center/cover;
+            background: url("images/girlT.jpg") no-repeat center/cover;
             border:1px solid #000;
         }
         #box span{
@@ -26,34 +25,29 @@
             width: 10px;
             height: 10px;
             background-color: pink;
-
         }
-
 
     </style>
 </head>
 <body>
-<div id="box">
-    
-</div>
+<div id = box></div>
 <script>
     var oBox = document.getElementById("box"),
-        aSpan = oBox.querySelectorAll("span"),
+        aSpan = oBox.getElementsByTagName("span"),
+
         str = "";
 
-    for(var i=1;i<=32;i++){
-        //32行
-        for(var j=1;j<=18;j++){
-            //18列
+    for(var i=0;i<=32*18-1;i++){
+
             str += "<span></span>";
-        }
-    }oBox.innerHTML = str;
+    }
+    oBox.innerHTML = str;
     //开启新的循环，构建事件函数
-//    for(var k=1;k<=32*18;k++){
-//        aSpan[k].onmouseenter = function () {
-//            this.style.opacity = 0;
-//        }
-//    }
+    for(var i=0;i<=32*18-1;i++){
+            aSpan[i].onmouseenter = function () {
+                this.style.opacity = 0;
+            }
+    }
 
 
 

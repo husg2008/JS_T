@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>自定义复选框</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: "microsoft yahei", serif;
+        }
+
+        li {
+            list-style-type: none;
+        }
+        #box{
+            display:block;
+            width: 780px;
+            margin:50px auto;
+        }
+        #box .title{
+            width: 680px;
+            height: 50px;
+            line-height:50px;
+            font-weight:bold;
+            border-bottom:1px dashed #000;
+        }
+        #box ul{
+            margin:20px 0 0 5px;
+        }
+
+        #box li:nth-child(odd){
+            float:left;
+            width: 600px;
+            height: 60px;
+            line-height:60px;
+            margin:10px;
+            background-color: red;
+            /*background: url("images/ckbg1.jpg") no-repeat;*/
+            cursor:pointer;
+            border:1px solid red;
+        }
+        #box li:nth-child(odd){
+            float:left;
+            width: 600px;
+            height: 60px;
+            line-height:60px;
+            margin:10px;
+            background-color: red;
+            /*background: url("images/ckbg1.jpg") no-repeat;*/
+            cursor:pointer;
+            border:1px solid red;
+        }
+        #box li.checked{
+            background: url("images/ckbg2.jpg") no-repeat;
+        }
+        #box li.red{
+            color:red;
+        }
+    </style>
+</head>
+<body>
+<div id="box">
+
+    <ul>
+        <li class="red">李连杰</li>
+        <li>成龙</li>
+        <li>朱茵</li>
+        <li>舒淇</li>
+        <li class="red">范冰冰</li>
+        <li>刘德华</li>
+        <li class="red">周华健</li>
+        <li>冯巩</li>
+    </ul>
+    <div class="title">
+        <span>全选</span>
+        <span>全不选</span>
+        <span>反选</span>
+    </div>
+</div>
+<script>
+    var aLi = document.getElementById("box").getElementsByTagName("li");
+    var length = aLi.length;
+
+    for(var i=0;i<length;i++){
+        aLi[i] .ifcheck = false;//自定义属性 帮助判断是否选中
+        aLi[i] .startClass = aLi[i] .className;//自定义属性 保存原始的类名
+        aLi[i].onclick = function () {
+            //选中后变成 未选
+            if(this.ifcheck){
+                this.className = this.startClass;
+                this.ifcheck = false;
+
+            }else{//未选中变成 选中
+                this.className += " checked";
+                this.ifcheck = true;
+            }
+        }
+    }
+
+
+
+</script>
+
+</body>
+</html>
