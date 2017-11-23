@@ -14,92 +14,108 @@
             list-style-type: none;
         }
         #box{
+            position:relative;
             display:block;
             width: 780px;
             margin:50px auto;
         }
         #box .title{
-            width: 680px;
+            position:absolute;
+            top:660px;
+            left:10px;
+        }
+        #box .title span{
+            display:inline-block;
+            width: 80px;
             height: 50px;
+            padding-left: 20px;
             line-height:50px;
             font-weight:bold;
-            border-bottom:1px dashed #000;
+            background-image: url("images/ckbg1.jpg");
+            background-repeat: no-repeat;
+            background-position: 0 15px;
+        }
+        #box .title span.checked{
+            background-image: url("images/ckbg2.jpg");
+            background-repeat: no-repeat;
+            background-position: 0 15px;
         }
         #box ul{
             margin:20px 0 0 5px;
         }
-
-        #box li:nth-child(odd){
+        #box li{
             float:left;
             width: 600px;
             height: 60px;
             line-height:60px;
             margin:10px;
-            background-color: red;
-            /*background: url("images/ckbg1.jpg") no-repeat;*/
+            color:#fff;
+            font-weight:bold;
+            text-indent:2em;
+            background-color: #000;
             cursor:pointer;
-            border:1px solid red;
+            background-image: url("images/ckbg1.jpg");
+            background-repeat: no-repeat;
+            background-position: 0 20px;
         }
-        #box li:nth-child(odd){
-            float:left;
-            width: 600px;
-            height: 60px;
-            line-height:60px;
-            margin:10px;
-            background-color: red;
-            /*background: url("images/ckbg1.jpg") no-repeat;*/
-            cursor:pointer;
-            border:1px solid red;
+        #box li:nth-child(even){
+            background-color: blue;
         }
         #box li.checked{
-            background: url("images/ckbg2.jpg") no-repeat;
-        }
-        #box li.red{
-            color:red;
-        }
+              background-image: url("images/ckbg2.jpg");
+              background-repeat: no-repeat;
+              background-position: 0 20px;
+          }
+
     </style>
 </head>
 <body>
 <div id="box">
-
-    <ul>
-        <li class="red">李连杰</li>
-        <li>成龙</li>
-        <li>朱茵</li>
-        <li>舒淇</li>
-        <li class="red">范冰冰</li>
-        <li>刘德华</li>
-        <li class="red">周华健</li>
-        <li>冯巩</li>
-    </ul>
+    <div class="content">
+        <ul>
+            <li >李连杰</li>
+            <li>成 龙</li>
+            <li>朱 茵</li>
+            <li>舒 淇</li>
+            <li >范冰冰</li>
+            <li>刘德华</li>
+            <li >周华健</li>
+            <li>冯 巩</li>
+        </ul>
+    </div>
     <div class="title">
         <span>全选</span>
-        <span>全不选</span>
         <span>反选</span>
     </div>
 </div>
 <script>
     var aLi = document.getElementById("box").getElementsByTagName("li");
-    var length = aLi.length;
+    var length = aLi.length,
+        aSpan = document.querySelectorAll("#box .title span"),
+        num = 0;
+        //全选事件
 
-    for(var i=0;i<length;i++){
-        aLi[i] .ifcheck = false;//自定义属性 帮助判断是否选中
-        aLi[i] .startClass = aLi[i] .className;//自定义属性 保存原始的类名
+    for(i=0;i<length;i++){
+        aSpan[0].index = i;
+        aSpan[0].onclick = function () {
+            num = this.index;
+            aLi[num].className = "checked";
+            this.className = "checked";
+        }
+        aLi[i].ifcheck = false;//自定义属性 帮助判断是否选中
+        aLi[i].startClass = aLi[i].className;//自定义属性 保存原始的类名
         aLi[i].onclick = function () {
-            //选中后变成 未选
+        //选中后变成 未选
             if(this.ifcheck){
                 this.className = this.startClass;
                 this.ifcheck = false;
 
             }else{//未选中变成 选中
-                this.className += " checked";
+                this.className = " checked";
                 this.ifcheck = true;
             }
         }
     }
-
-
-
 </script>
 
 </body>
