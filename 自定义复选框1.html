@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>自定义复选框</title>
+    <title>自定义复选框-计数器思路</title>
     <style>
         * {
             margin: 0;
@@ -19,27 +19,6 @@
             width: 780px;
             margin:50px auto;
         }
-        #box .title{
-            position:absolute;
-            top:660px;
-            left:10px;
-        }
-        #box .title span{
-            display:inline-block;
-            width: 80px;
-            height: 50px;
-            padding-left: 20px;
-            line-height:50px;
-            font-weight:bold;
-            background-image: url("images/ckbg1.jpg");
-            background-repeat: no-repeat;
-            background-position: 0 15px;
-        }
-        #box .title span.checked{
-            background-image: url("images/ckbg2.jpg");
-            background-repeat: no-repeat;
-            background-position: 0 15px;
-        }
         #box ul{
             margin:20px 0 0 5px;
         }
@@ -48,24 +27,57 @@
             width: 600px;
             height: 60px;
             line-height:60px;
-            margin:10px;
+            margin:1px;
             color:#fff;
             font-weight:bold;
             text-indent:2em;
-            background-color: #000;
             cursor:pointer;
             background-image: url("images/ckbg1.jpg");
             background-repeat: no-repeat;
-            background-position: 0 20px;
+            background-position: 5px 20px;
         }
-        #box li:nth-child(even){
-            background-color: blue;
+        #box li:nth-child(3n){
+            background-color: #1c2668;
+        }
+        #box li:nth-child(3n-1){
+            background-color: #336446;
+        }
+        #box li:nth-child(3n-2){
+            background-color: #694042;
         }
         #box li.checked{
               background-image: url("images/ckbg2.jpg");
               background-repeat: no-repeat;
-              background-position: 0 20px;
+              background-position: 5px 20px;
           }
+        #box .all{
+            position:absolute;
+            top:500px;
+            left:10px;
+        }
+        #box .all span{
+            display:inline-block;
+            width: 50px;
+            height: 50px;
+            padding-left: 20px;
+            line-height:50px;
+            font-weight:bold;
+            background-image: url("images/ckbg1.jpg");
+            background-repeat: no-repeat;
+            background-position: 0  15px;
+        }
+        #box .all span.on{
+            background-image: url("images/ckbg2.jpg");
+            background-repeat: no-repeat;
+            background-position: 0 15px;
+        }
+        #box .all button{
+            width: 60px;
+            height: 25px;
+            font-size:14px;
+            font-weight:bold;
+
+        }
 
     </style>
 </head>
@@ -83,38 +95,50 @@
             <li>冯 巩</li>
         </ul>
     </div>
-    <div class="title">
+    <div class="all">
         <span>全选</span>
-        <span>反选</span>
+        <button>反选</button>
     </div>
 </div>
 <script>
     var aLi = document.getElementById("box").getElementsByTagName("li");
     var length = aLi.length,
-        aSpan = document.querySelectorAll("#box .title span"),
-        num = 0;
-        //全选事件
-
-    for(i=0;i<length;i++){
-        aSpan[0].index = i;
-        aSpan[0].onclick = function () {
-            num = this.index;
-            aLi[num].className = "checked";
-            this.className = "checked";
-        }
-        aLi[i].ifcheck = false;//自定义属性 帮助判断是否选中
-        aLi[i].startClass = aLi[i].className;//自定义属性 保存原始的类名
+        aSpan = document.querySelector("#box .all span"),
+        aBt = document.querySelector("#box .all button"),
+        count = 0;
+    //注册单选事件
+    for(i=0;i<length;i++) {
+        aLi[i].index = i;//自定义属性保存i的值
         aLi[i].onclick = function () {
-        //选中后变成 未选
-            if(this.ifcheck){
-                this.className = this.startClass;
-                this.ifcheck = false;
-
-            }else{//未选中变成 选中
-                this.className = " checked";
-                this.ifcheck = true;
-            }
+            var cList = this.classList;
+            cList.toggle("checked");
+            cList.contains("checked")?count++:count--;
+            aSpan.classList[count === length?"add":"remove"]("on");
         }
+    }
+    //注册全选事件
+    aSpan.onclick = function () {
+        var cList = this.classList,
+            fn = "";
+            if(cList.contains("on")){
+                fn = "remove";
+                count = 0;
+            }else{
+                fn = "add";
+                count = length;
+            }
+            for(i=0;i<length;i++){
+                aLi[i].classList[fn]("checked");
+            }
+          cList.toggle("on");
+    }
+    //注册反选事件
+    aBt.onclick = function () {
+        count = length - count;
+        for(i=0;i<length;i++) {
+            aLi[i].classList.toggle("checked");
+        }
+        aSpan.classList[count === length?"add":"remove"]("on");
     }
 </script>
 
