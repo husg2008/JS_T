@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>price</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: "microsoft yahei", serif;
+        }
+        #box{
+            width: 800px;
+            height: 250px;
+            margin:50px auto;
+            border-collapse:collapse;
+        }
+        tr{
+            width: 25%;
+            height: 50px;
+            line-height:50px;
+        }
+        th{
+            background-color: pink;
+        }
+        td{
+            width: 25%;
+            text-align:center;
+            /*border:1px solid rgb(208, 29, 9);*/
+        }
+        td.img{
+            background-repeat:no-repeat;
+            background-position: center;
+            background-size:20%;
+        }
+        td.count span.minus{
+            float:left;
+            width: 35px;
+            height: 35px;
+            line-height:35px;
+            color:#fff;
+            cursor:pointer;
+
+
+        }
+        td.count p{
+            margin:auto;
+            width: 110px;
+            height: 35px;
+            line-height:35px;
+            color:pink;
+            background-color: #ddd;
+        }
+        td.count span.add{
+            float:right;
+            width: 35px;
+            height: 35px;
+            line-height:35px;
+            color:#fff;
+            cursor:pointer;
+        }
+        li {
+            list-style-type: none;
+        }
+        .total{
+            width: 800px;
+            height:50px;
+            margin:-40px auto;
+            background-color: pink;
+        }
+        .total p{
+            float:left;
+            line-height:50px;
+            padding-right:100px;
+        }
+        .total p.sum{
+            margin-left:450px;
+        }
+    </style>
+</head>
+<body>
+    <table id="box" border="1">
+        <tr>
+            <th>物品</th>
+            <th>单价</th>
+            <th>数量</th>
+            <th>价格</th>
+        </tr>
+        <tr>
+            <td class="img" style="background-image:url('images/g1.jpg')"></td>
+            <td>50$</td>
+            <td class="count">
+                <p>0
+                    <span class="minus">-</span>
+                    <span class="add">+</span>
+                </p>
+            </td>
+            <td>0</td>
+        </tr>
+        <tr>
+            <td class="img" style="background-image:url('images/g2.jpg')"></td>
+            <td>20$</td>
+            <td class="count">
+                <p>0
+                    <span class="minus">-</span>
+                    <span class="add">+</span>
+                </p>
+            </td>
+            <td>0</td>
+        </tr>
+        <tr>
+            <td class="img" style="background-image:url('images/g3.jpg')"></td>
+            <td>15$</td>
+            <td class="count">
+                <p>0
+                    <span class="minus">-</span>
+                    <span class="add">+</span>
+                </p>
+            </td>
+            <td>0</td>
+        </tr>
+        <tr>
+            <td class="img" style="background-image:url('images/g4.jpg')"></td>
+            <td>3$</td>
+            <td class="count">
+                <p>0
+                    <span class="minus">-</span>
+                    <span class="add">+</span>
+                </p>
+            </td>
+            <td>0</td>
+        </tr>
+
+    </table>
+    <div class="total">
+        <p class="sum">总量: 0 件</p>
+        <p class="price">总价: 0 元</p>
+    </div>
+<script>
+
+</script>
+
+</body>
+</html>
