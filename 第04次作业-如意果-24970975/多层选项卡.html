@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>多层选项卡</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: "microsoft yahei", serif;
+        }
+
+        li {
+            list-style-type: none;
+        }
+        #box{
+            position:relative;
+            width: 800px;
+            height: 400px;
+            margin:100px auto;
+        }
+        #box .left{
+            position:absolute;
+            top: 0;
+            left: 0;
+        }
+        #box .left li{
+            width: 90px;
+            height: 30px;
+            color:#fff;
+            background-color: rgb(93, 246, 102);
+            font-size:14px;
+            margin-bottom:1px;
+            text-align: center;
+            line-height:30px;
+            cursor:pointer;
+        }
+        #box .left li.org{
+            background-color: orangered;
+        }
+        #box .right{
+            position:absolute;
+            top: 0;
+            left: 95px;
+            width: 600px;
+            height: 400px;
+        }
+        #box .right div{
+            display:none;
+            position:absolute;
+            bottom: 10px;
+            left: 10px;
+
+        }
+        #box .right div.on{
+            display:block;
+        }
+        #box .right div span{
+            color:#fff;
+            background-color: rgb(93, 246, 102);
+            margin-left:5px;
+            padding:0 5px;
+        }
+        #box .right div span.org{
+            background-color: orangered;
+        }
+        #box .right li{
+            position:absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        #box .right ul{
+            display:none;
+            position:absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        #box .right ul.on{
+            display:block;
+        }
+        #box .right ul li{
+            display:none;
+            position:absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        #box .right ul li.on{
+            display:block;
+        }
+        #box .right ul li img{
+            position:absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+
+    </style>
+</head>
+<body>
+<div id="box">
+    <ul class="left">
+        <li class="org">车子</li>
+        <li>美食</li>
+        <li>风景妞</li>
+    </ul>
+    <ul class="right">
+        <li class="list">
+            <ul class="on car">
+                <li class="on"><img src="images/1.jpg" alt=""></li>
+                <li><img src="images/2.jpg" alt=""></li>
+                <li><img src="images/3.jpg" alt=""></li>
+                <li><img src="images/4.jpg" alt=""></li>
+            </ul>
+            <div class="on num1">
+                <span class="org">1</span>
+                <span>2</span>
+                <span>3</span>
+                <span>4</span>
+            </div>
+        </li>
+        <li class="list">
+            <ul class="food">
+                <li class="on"><img src="images/m1.jpg" alt=""></li>
+                <li><img src="images/m2.jpg" alt=""></li>
+                <li><img src="images/m3.jpg" alt=""></li>
+                <li><img src="images/m4.jpg" alt=""></li>
+                <li><img src="images/m5.jpg" alt=""></li>
+            </ul>
+            <div class="num2">
+                <span class="org">1</span>
+                <span>2</span>
+                <span>3</span>
+                <span>4</span>
+                <span>5</span>
+            </div>
+        </li>
+        <li class="list">
+            <ul class="beauty">
+                <li class="on"><img src="images/s1.jpg" alt=""></li>
+                <li><img src="images/s2.jpg" alt=""></li>
+                <li><img src="images/s3.jpg" alt=""></li>
+                <li><img src="images/s4.jpg" alt=""></li>
+                <li><img src="images/s5.jpg" alt=""></li>
+            </ul>
+            <div class="num3">
+                <span class="org">1</span>
+                <span>2</span>
+                <span>3</span>
+                <span>4</span>
+                <span>5</span>
+            </div>
+        </li>
+    </ul>
+</div>
+<script>
+    var oBox = document.getElementById("box"),
+        aLeft = oBox.getElementsByClassName(".left"),
+        aLli = oBox.querySelectorAll(".left li"),
+        aUl = oBox.querySelectorAll(".right li ul"),
+        aDiv = oBox.querySelectorAll(".right li div");
+        aRli = oBox.querySelectorAll(".right .list"),
+        aCar = oBox.querySelectorAll(".right .car li"),
+        aFood = oBox.querySelectorAll(".right .food li"),
+        aBeauty = oBox.querySelectorAll(".right .beauty li"),
+        aImg = oBox.querySelectorAll(".right img"),
+        aTab = oBox.querySelectorAll(".right span"),
+        length1 = aLli.length;
+
+
+        var num = 0;
+    for(i=0;i<length1;i++) {
+        var index;
+        aLli[i].index = i;//自定义变量存储序号
+        aLli[i].onmouseenter = function () {
+            aLli[num].classList.remove("org");//删除前一个的颜色
+           aUl[num].classList.remove("on");//隐藏前一图片
+           aDiv[num].classList.remove("on");//隐藏前一图片的序号
+            num = this.index;//序号赋值给num
+            aLli[num].classList.add("org");//添加当前的颜色
+            aUl[num].classList.add("on");//显示当前图片
+            aDiv[num].classList.add("on");//显示当前图片的序号
+        }
+    }
+    //处理右侧内部的选项卡
+    var length2 = aImg.length,
+        allImgLi = [],
+        allTabLi = [];
+
+    for (i = 0; i < length2; i++) {
+        allImgLi[i] = aImg[i].getElementsByTagName("li");
+        allTabLi[i] = aTab[i].getElementsByTagName("li");
+        allTabLi[i].showJ = 0;//用来表示当前显示的是第几个
+        for (var j = 0,ll = allTabLi[i].length; j < ll; j++) {
+            allTabLi[i][j].indexI = i;//存储时间函数里面需要用到的i
+            allTabLi[i][j].indexJ = j;//存储时间函数里面需要用到的j
+            allTabLi[i][j].onmouseenter = function () {
+                var i = this.indexI , j = allTabLi[i].showJ;
+                if ( j !== this.indexJ ){
+                    allImgLi[i][j].classList.remove("on");
+                    allTabLi[i][j].classList.remove("org");
+
+                    allTabLi[i].showJ = j = this.indexJ;
+
+                    allImgLi[i][j].classList.add("on");
+                    allTabLi[i][j].classList.add("org");
+                }
+            };
+        }
+    }
+
+
+
+</script>
+
+</body>
+</html>
