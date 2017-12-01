@@ -170,8 +170,7 @@
         aCar = oBox.querySelectorAll(".right .car li"),
         aFood = oBox.querySelectorAll(".right .food li"),
         aBeauty = oBox.querySelectorAll(".right .beauty li"),
-        aImg = oBox.querySelectorAll(".right img"),
-        aTab = oBox.querySelectorAll(".right span"),
+
         length1 = aLli.length;
 
 
@@ -190,29 +189,30 @@
         }
     }
     //处理右侧内部的选项卡
-    var length2 = aImg.length,
-        allImgLi = [],
-        allTabLi = [];
+    var length2 = aUl.length,
+
+        allUl = [],
+        allDiv = [];
 
     for (i = 0; i < length2; i++) {
-        allImgLi[i] = aImg[i].getElementsByTagName("li");
-        allTabLi[i] = aTab[i].getElementsByTagName("li");
-        allTabLi[i].showJ = 0;//用来表示当前显示的是第几个
-        for (var j = 0,ll = allTabLi[i].length; j < ll; j++) {
-            allTabLi[i][j].indexI = i;//存储时间函数里面需要用到的i
-            allTabLi[i][j].indexJ = j;//存储时间函数里面需要用到的j
-            allTabLi[i][j].onmouseenter = function () {
-                var i = this.indexI , j = allTabLi[i].showJ;
+        allUl[i] = aUl[i].getElementsByTagName("li");
+        allDiv[i] = aDiv[i].getElementsByTagName("li");
+        allDiv[i].showJ = 0;//用来表示当前显示的是第几个
+        for (var j = 0,ll = allDiv[i].length; j < ll; j++) {
+            allDiv[i][j].indexI = i;//存储事件函数里面需要用到的i
+            allDiv[i][j].indexJ = j;//存储事件函数里面需要用到的j
+            allDiv[i][j].onmouseenter = function () {
+                var i = this.indexI , j = allDiv[i].showJ;
                 if ( j !== this.indexJ ){
-                    allImgLi[i][j].classList.remove("on");
-                    allTabLi[i][j].classList.remove("org");
+                    allUl[i][j].classList.remove("on");
+                    allDiv[i][j].classList.remove("org");
 
-                    allTabLi[i].showJ = j = this.indexJ;
+                    allDiv[i].showJ = j = this.indexJ;
 
-                    allImgLi[i][j].classList.add("on");
-                    allTabLi[i][j].classList.add("org");
+                    allUl[i][j].classList.add("on");
+                    allDiv[i][j].classList.add("org");
                 }
-            };
+            }
         }
     }
 
